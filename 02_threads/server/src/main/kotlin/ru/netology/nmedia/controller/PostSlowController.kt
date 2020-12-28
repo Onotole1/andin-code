@@ -34,14 +34,14 @@ class PostSlowController(private val service: PostService) {
     }
 
     @PostMapping("/{id}/likes")
-    fun likeById(@PathVariable id: Long) {
+    fun likeById(@PathVariable id: Long): Post {
         Thread.sleep(delay)
-        service.likeById(id)
+        return service.likeById(id)
     }
 
     @DeleteMapping("/{id}/likes")
-    fun unlikeById(@PathVariable id: Long) {
+    fun unlikeById(@PathVariable id: Long): Post {
         Thread.sleep(delay)
-        service.unlikeById(id)
+        return service.unlikeById(id)
     }
 }

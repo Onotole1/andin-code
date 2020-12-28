@@ -36,15 +36,21 @@ class PostService(private val repository: PostRepository) {
 
     fun removeById(id: Long): Unit = repository.deleteById(id)
 
-    fun likeById(id: Long) {
+    fun likeById(id: Long): Post {
         if (repository.likeById(id) != 1) {
             throw NotFoundException()
         }
+
+        return repository.getOne(id)
+                .toDto()
     }
 
-    fun unlikeById(id: Long) {
+    fun unlikeById(id: Long): Post {
         if (repository.unlikeById(id) != 1) {
             throw NotFoundException()
         }
+
+        return repository.getOne(id)
+                .toDto()
     }
 }

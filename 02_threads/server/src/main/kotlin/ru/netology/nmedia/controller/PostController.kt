@@ -20,8 +20,8 @@ class PostController(private val service: PostService) {
     fun removeById(@PathVariable id: Long) = service.removeById(id)
 
     @PostMapping("/{id}/likes")
-    fun likeById(@PathVariable id: Long) = service.likeById(id)
+    fun likeById(@PathVariable id: Long): Post = service.likeById(id)
 
     @DeleteMapping("/{id}/likes")
-    fun unlikeById(@PathVariable id: Long) = service.unlikeById(id)
+    fun unlikeById(@PathVariable id: Long): Post = service.unlikeById(id)
 }
